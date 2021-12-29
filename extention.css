@@ -38,14 +38,19 @@ li {
 
 li a {
     color: #fd3c65;
+
 }
 
 h1{
     text-align: center;
     color :#fd3c65
 }
-div{
+.buttons{
     display: flex;
     justify-content: center;
+
+}
+.list{
+    margin: 20px;
 
 }

@@ -15,10 +15,15 @@ const tabBtn = document.getElementById("tab-btn")
 const rightBtn = document.getElementById("right-btn")
 const leftBtn = document.getElementById("left-btn")
 const ulEl = document.getElementById("ul-el")
+const removeBtn = document.getElementById("remove-btn")
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("Random"))
 const tutorialsFromLocalStorage = JSON.parse(localStorage.getItem("Tutorials"))
 const mangaFromLocalStorage = JSON.parse(localStorage.getItem("Manga"))
 const moviesFromLocalStorage = JSON.parse(localStorage.getItem("Movies"))
+
+if (localStorage.change === undefined){
+    localStorage.change = 0
+}
 
 if (leadsFromLocalStorage) {
     categoriesObj[0] = leadsFromLocalStorage
@@ -37,7 +42,7 @@ render(localStorage.change)
 
 function render(index) {
     title.textContent = titlesArray[index]
-    let listItems = ""
+    let listItems = ''
     let categoriesObjElement = categoriesObj[index];
     for (let i = 0; i < categoriesObjElement.length; i++) {
         listItems += `
@@ -82,3 +87,9 @@ leftBtn.addEventListener("click", function () {
     }
     render(localStorage.change)
 })
+
+function remove(index){
+    categoriesObj[localStorage.change].splice(index, 1)
+    render(localStorage.change)
+}
+
